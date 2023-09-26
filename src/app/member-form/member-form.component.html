@@ -1,0 +1,14 @@
+<div [formGroup]="memberForm" class="member-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input
+      matInput
+      formControlName="lastName"
+      *appFormControlHint="memberForm.controls.lastName"
+    />
+  </mat-form-field>
+</div>

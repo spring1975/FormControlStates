@@ -1,0 +1,247 @@
+<div [formGroup]="exampleForm" class="example-controls">
+  <section>
+    <h3>Calling on clearableInput field</h3>
+    <div class="example-button-row">
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.clearableInput.markAsPristine()"
+        >
+          <mat-icon>auto_mode</mat-icon>
+          .markAsPristine()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.clearableInput.markAsUntouched()"
+        >
+          <mat-icon>do_not_touch</mat-icon>
+          .markAsUntouched()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.clearableInput.setValue('bup')"
+        >
+          <mat-icon>input</mat-icon>
+          .setValue()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.clearableInput.reset()"
+        >
+          <mat-icon>restart_alt</mat-icon>
+          .reset()
+        </button>
+      </div>
+    </div>
+    <mat-form-field class="example-form-field">
+      <mat-label>Clearable input</mat-label>
+      <input matInput type="text" formControlName="clearableInput" />
+      <mat-hint class="control-states"
+        ><mat-icon
+          [ngClass]="exampleForm.controls.clearableInput.valid ? 'true' : 'false'"
+          >fact_check</mat-icon
+        >
+
+        <mat-icon
+          [ngClass]="exampleForm.controls.clearableInput.untouched ? 'true' : 'false'"
+          >fingerprint</mat-icon
+        >
+        <mat-icon
+          [ngClass]="exampleForm.controls.clearableInput.pristine ? 'true' : 'false'"
+          >auto_awesome</mat-icon
+        ></mat-hint
+      >
+    </mat-form-field>
+  </section>
+  <section>
+    <h3>Calling on otherInput field</h3>
+    <div class="example-button-row">
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.otherInput.markAsPristine()"
+        >
+          <mat-icon>auto_mode</mat-icon>
+          .markAsPristine()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.otherInput.markAsUntouched()"
+        >
+          <mat-icon>do_not_touch</mat-icon>
+          .markAsUntouched()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.otherInput.setValue('boop')"
+        >
+          <mat-icon>input</mat-icon>
+          .setValue()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.otherInput.reset()"
+        >
+          <mat-icon>restart_alt</mat-icon>
+          .reset()
+        </button>
+      </div>
+    </div>
+    <mat-form-field class="example-form-field">
+      <mat-label>Other input</mat-label>
+      <input matInput type="text" formControlName="otherInput" />
+      <mat-hint class="control-states"
+        ><mat-icon
+          [ngClass]="exampleForm.controls.otherInput.valid ? 'true' : 'false'"
+          >fact_check</mat-icon
+        >
+
+        <mat-icon
+          [ngClass]="exampleForm.controls.otherInput.untouched ? 'true' : 'false'"
+          >fingerprint</mat-icon
+        >
+        <mat-icon
+          [ngClass]="exampleForm.controls.otherInput.pristine ? 'true' : 'false'"
+          >auto_awesome</mat-icon
+        ></mat-hint
+      >
+    </mat-form-field>
+  </section>
+  <section>
+    <h3>Calling on mustHaveValue field</h3>
+    <div class="example-button-row">
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.mustHaveValue.markAsPristine()"
+        >
+          <mat-icon>auto_mode</mat-icon>
+          .markAsPristine()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.mustHaveValue.markAsUntouched()"
+        >
+          <mat-icon>do_not_touch</mat-icon>
+          .markAsUntouched()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.mustHaveValue.setValue('bop')"
+        >
+          <mat-icon>input</mat-icon>
+          .setValue()
+        </button>
+      </div>
+      <div class="button">
+        <button
+          mat-fab
+          extended
+          color="primary"
+          (click)="exampleForm.controls.mustHaveValue.reset()"
+        >
+          <mat-icon>restart_alt</mat-icon>
+          .reset()
+        </button>
+      </div>
+    </div>
+    <mat-form-field class="example-form-field">
+      <mat-label>Must have value input</mat-label>
+      <input matInput type="text" formControlName="mustHaveValue" />
+      <mat-hint class="control-states"
+        ><mat-icon
+          [ngClass]="exampleForm.controls.mustHaveValue.valid ? 'true' : 'false'"
+          >fact_check</mat-icon
+        >
+
+        <mat-icon
+          [ngClass]="exampleForm.controls.mustHaveValue.untouched ? 'true' : 'false'"
+          >fingerprint</mat-icon
+        >
+        <mat-icon
+          [ngClass]="exampleForm.controls.mustHaveValue.pristine ? 'true' : 'false'"
+          >auto_awesome</mat-icon
+        ></mat-hint
+      >
+    </mat-form-field>
+  </section>
+  <section>
+    <app-members formControlName="members"></app-members>
+  </section>
+</div>
+
+<h2>Calling on form</h2>
+<div class="example-button-row">
+  <div class="button">
+    <button
+      mat-fab
+      extended
+      color="primary"
+      (click)="exampleForm.markAsPristine()"
+    >
+      <mat-icon>auto_mode</mat-icon>
+      .markAsPristine()
+    </button>
+  </div>
+  <div class="button">
+    <button
+      mat-fab
+      extended
+      color="primary"
+      (click)="exampleForm.markAsUntouched()"
+    >
+      <mat-icon>do_not_touch</mat-icon>
+      .markAsUntouched()
+    </button>
+  </div>
+  <div class="button">
+    <button mat-fab extended color="primary" (click)="setForm()">
+      <mat-icon>input</mat-icon>
+      .setValue()
+    </button>
+  </div>
+  <div class="button">
+    <button mat-fab extended color="primary" (click)="exampleForm.reset()">
+      <mat-icon>restart_alt</mat-icon>
+      .reset()
+    </button>
+  </div>
+</div>

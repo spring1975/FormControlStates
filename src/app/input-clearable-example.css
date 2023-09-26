@@ -1,0 +1,45 @@
+.example-form-field {
+  width: 200px;
+}
+
+.example-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-states {
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  column-gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.example-button-row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: .5rem;
+}
+
+.true {
+  color: goldenrod;
+}
+.false {
+  color: red;
+}
+
+hr {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+section {
+  background-color: rgb(33, 33, 33);
+  margin: 1rem;
+  padding: .5rem;
+}
