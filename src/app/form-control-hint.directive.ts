@@ -1,33 +1,25 @@
-import { NgClass } from "@angular/common";
 import {
   Directive,
-  Input,
   OnInit,
   Renderer2,
   ElementRef,
-  AfterViewInit,
   ViewContainerRef,
-  ComponentFactoryResolver,
   ViewChild,
   HostBinding,
 } from "@angular/core";
-import { FormControl, NgControl } from "@angular/forms";
 import { MatIcon } from "@angular/material/icon";
 
 @Directive({
   selector: "[appFormControlHint]",
 })
 export class FormControlHintDirective implements OnInit {
-  @Input("appFormControlHint") targetControl: FormControl;
-  @ViewChild("myContainerRef", {read: ElementRef}) elementRef2: ElementRef;
+    @ViewChild("myContainerRef", {read: ElementRef}) elementRef2: ElementRef;
   @HostBinding('class.active') isActive:boolean = false;
 
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private control: NgControl,
     private vcRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
   ) {}
 
   ngOnInit() {
