@@ -50,21 +50,7 @@
     <mat-form-field class="example-form-field">
       <mat-label>Clearable input</mat-label>
       <input matInput type="text" formControlName="clearableInput" />
-      <mat-hint class="control-states"
-        ><mat-icon
-          [ngClass]="exampleForm.controls.clearableInput.valid ? 'true' : 'false'"
-          >fact_check</mat-icon
-        >
-
-        <mat-icon
-          [ngClass]="exampleForm.controls.clearableInput.untouched ? 'true' : 'false'"
-          >fingerprint</mat-icon
-        >
-        <mat-icon
-          [ngClass]="exampleForm.controls.clearableInput.pristine ? 'true' : 'false'"
-          >auto_awesome</mat-icon
-        ></mat-hint
-      >
+      <!-- <ng-container *appFormControlHint="exampleForm.controls.clearableInput"></ng-container> -->
     </mat-form-field>
   </section>
   <section>
@@ -118,21 +104,7 @@
     <mat-form-field class="example-form-field">
       <mat-label>Other input</mat-label>
       <input matInput type="text" formControlName="otherInput" />
-      <mat-hint class="control-states"
-        ><mat-icon
-          [ngClass]="exampleForm.controls.otherInput.valid ? 'true' : 'false'"
-          >fact_check</mat-icon
-        >
-
-        <mat-icon
-          [ngClass]="exampleForm.controls.otherInput.untouched ? 'true' : 'false'"
-          >fingerprint</mat-icon
-        >
-        <mat-icon
-          [ngClass]="exampleForm.controls.otherInput.pristine ? 'true' : 'false'"
-          >auto_awesome</mat-icon
-        ></mat-hint
-      >
+      <!-- <ng-container *appFormControlHint="exampleForm.controls.otherInput"></ng-container> -->
     </mat-form-field>
   </section>
   <section>
@@ -186,21 +158,8 @@
     <mat-form-field class="example-form-field">
       <mat-label>Must have value input</mat-label>
       <input matInput type="text" formControlName="mustHaveValue" />
-      <mat-hint class="control-states"
-        ><mat-icon
-          [ngClass]="exampleForm.controls.mustHaveValue.valid ? 'true' : 'false'"
-          >fact_check</mat-icon
-        >
+      <!-- <ng-container *appFormControlHint="exampleForm.controls.mustHaveValue"></ng-container> -->
 
-        <mat-icon
-          [ngClass]="exampleForm.controls.mustHaveValue.untouched ? 'true' : 'false'"
-          >fingerprint</mat-icon
-        >
-        <mat-icon
-          [ngClass]="exampleForm.controls.mustHaveValue.pristine ? 'true' : 'false'"
-          >auto_awesome</mat-icon
-        ></mat-hint
-      >
     </mat-form-field>
   </section>
   <section>

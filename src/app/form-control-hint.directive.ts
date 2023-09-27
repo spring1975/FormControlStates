@@ -1,59 +1,76 @@
+import { NgClass } from "@angular/common";
 import {
-AfterViewInit,
-  ComponentFactoryResolver,
   Directive,
-  ElementRef,
   Input,
   OnInit,
   Renderer2,
-  TemplateRef,
-  ViewChild,
+  ElementRef,
+  AfterViewInit,
   ViewContainerRef,
-} from '@angular/core';
-import { FormControl, NgControl } from '@angular/forms';
+  ComponentFactoryResolver,
+  ViewChild,
+  HostBinding,
+} from "@angular/core";
+import { FormControl, NgControl } from "@angular/forms";
+import { MatIcon } from "@angular/material/icon";
 
 @Directive({
-  selector: '[appFormControlHint]',
+  selector: "[appFormControlHint]",
 })
 export class FormControlHintDirective implements OnInit {
-  @Input('appFormControlHint') targetControl: FormControl;
+  @Input("appFormControlHint") targetControl: FormControl;
+  @ViewChild("myContainerRef", {read: ElementRef}) elementRef2: ElementRef;
+  @HostBinding('class.active') isActive:boolean = false;
 
-
-  constructor(private el: ElementRef, private templateRef: TemplateRef<any>, private renderer: Renderer2) {}
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private control: NgControl,
+    private vcRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {}
 
   ngOnInit() {
-    let parentElement = this.templateRef.elementRef.nativeElement.parentElement;
-    const inputElement = parentElement.querySelector('input');
+    this.createComponent();
+  }
+
+  createComponent() {
     
-    console.log('inputElement:', inputElement);
-  
-    // Create an embedded view from the template with context
-    const embeddedView = this.templateRef.createEmbeddedView({ targetControl: this.targetControl });
-  
-    // Create a mat-hint sibling element
-    const matHintElement = this.renderer.createElement('mat-hint');
-  
+    const matHintElement = this.renderer.createElement("mat-hint");
+    this.renderer.addClass(matHintElement, "control-states");
+    type States = "valid" | "untouched" | "pristine";
     // Create and append the HTML structure to mat-hint
-    const icons = ['fact_check', 'fingerprint', 'auto_awesome'];
-    icons.forEach(iconName => {
-      const iconElement = this.renderer.createElement('mat-icon');
-      this.renderer.setAttribute(iconElement, 'ngClass', `{'true': targetControl.valid, 'false': !targetControl.valid}`);
-      iconElement.textContent = iconName;
-      this.renderer.appendChild(matHintElement, iconElement);
+    const icons : {name: string; condition: States }[] = [
+      { name: "fact_check", condition: "valid" },
+      { name: "fingerprint", condition: "untouched" },
+      { name: "auto_awesome", condition: "pristine" },
+    ];
+    icons.forEach((icon) => {
+      const matIcon = this.vcRef.createComponent(MatIcon);
+      matIcon.instance.fontIcon = icon.name;
+
+      
+      const matIconEl = matIcon.injector.get(MatIcon)._elementRef.nativeElement;
+      
+     
+      this.renderer.addClass(matIconEl, icon.condition);
+
+      matIconEl.textContent = icon.name;
+      this.renderer.appendChild(matHintElement, matIconEl);
     });
-  
     // Find the parent mat-form-field element by traversing up the DOM
-    while (parentElement && !parentElement.classList.contains('mat-form-field')) {
+    let parentElement = this.elementRef.nativeElement.parentElement;
+    while (
+      parentElement &&
+      !parentElement.classList.contains("mat-mdc-form-field")
+    ) {
       parentElement = parentElement.parentElement;
     }
-  
-    console.log('parentElement:', parentElement);
-  
-    if (parentElement) {
-      // Insert the mat-hint element before the input element
-      if (inputElement) {
-        this.renderer.insertBefore(parentElement, matHintElement, inputElement);
-      }
+
+    // Insert the mat-hint element after the input element
+    const inputElement = parentElement.querySelector("input");
+    if (inputElement) {
+      this.renderer.appendChild(parentElement, matHintElement);
     }
   }
 }

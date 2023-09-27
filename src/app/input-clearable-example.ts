@@ -8,7 +8,7 @@ import { Person } from './member-form/member-form.component';
 @Component({
   selector: 'input-clearable-example',
   templateUrl: './input-clearable-example.html',
-  styleUrls: ['./input-clearable-example.css'],
+  styleUrls: ['./input-clearable-example.scss'],
 })
 export class InputClearableExample {
   exampleForm = new FormGroup({

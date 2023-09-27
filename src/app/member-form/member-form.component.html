@@ -2,13 +2,15 @@
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>First Name</mat-label>
     <input matInput formControlName="firstName" />
+    <ng-container
+      *appFormControlHint="memberForm.controls.lastName"
+    ></ng-container>
   </mat-form-field>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input
-      matInput
-      formControlName="lastName"
+    <input matInput formControlName="lastName" />
+    <ng-container
       *appFormControlHint="memberForm.controls.lastName"
-    />
+    ></ng-container>
   </mat-form-field>
 </div>

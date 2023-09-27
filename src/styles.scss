@@ -7,9 +7,30 @@ body {
   background-color: black;
   color: white;
 }
-.mdc-text-field--filled:not(.mdc-text-field--disabled){
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
   background-color: rgb(212, 212, 212);
 }
-html, body {
+html,
+body {
   height: 100%;
+}
+
+.true {
+  color: goldenrod;
+}
+.false {
+  color: red;
+}
+
+.mat-mdc-form-field {
+  &.ng-untouched .untouched,
+  &.ng-pristine .pristine,
+  &.ng-valid .valid {
+    color: goldenrod;
+  }
+  &.ng-touched .untouched,
+  &.ng-dirty .pristine,
+  &.ng-invalid .valid {
+    color: red;
+  }
 }
