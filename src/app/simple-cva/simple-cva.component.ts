@@ -54,7 +54,6 @@ export class SimpleCvaComponent implements ControlValueAccessor, Validator {
   registerOnTouched(fn: any): void {
     this.onTouched = () => {
       this.parentForm?.markAsTouched();
-      console.log("touched members");
       fn.apply(this);
     };
   }

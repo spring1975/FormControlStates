@@ -47,7 +47,6 @@ export class SelectCvaComponent implements ControlValueAccessor, Validator {
       if (validators) {
         this.selectControl.addValidators(validators);
       }
-      console.log('validators applied', this.selectControl.validator);
     } else {
       this.selectControl.valid
     }
@@ -69,7 +68,6 @@ export class SelectCvaComponent implements ControlValueAccessor, Validator {
   registerOnTouched(fn: any): void {
     this.onTouched = () => {
       this.parentForm?.markAsTouched();
-      console.log("touched members");
       fn.apply(this);
     };
   }

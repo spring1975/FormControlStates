@@ -54,7 +54,6 @@ export class MemberFormComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = () => {
       this.parentForm?.markAsTouched();
-      console.log('touched member')
       fn.apply(this);
     }
   }
