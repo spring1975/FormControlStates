@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  FormArray,
   FormBuilder,
-  FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
 import { Person } from './member-form/member-form.component';
@@ -24,7 +21,7 @@ export class InputClearableExample {
     mustHaveValue: this._fb.nonNullable.control('something'),
     members: this._fb.control<Person[]>([]),
     favoriteColor: this._fb.control('', [Validators.required]),
-    band: this._fb.control<GUID | null>(null, [guidValidator]),
+    band: this._fb.nonNullable.control<string>(new GUID('00000000-0000-0000-0000-000000000000').toString(), [guidValidator]),
   });
 
   constructor(private readonly _fb: FormBuilder) {}
@@ -35,7 +32,7 @@ export class InputClearableExample {
       otherInput: 'bar',
       mustHaveValue: 'baz',
       favoriteColor: 'green',
-      band: new GUID('e264dfe6-be00-40f5-a7c9-65c9974d6ee9'),
+      band: 'e264dfe6-be00-40f5-a7c9-65c9974d6ee9',
       members: [
         {
           firstName: 'Syd',
