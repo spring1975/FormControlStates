@@ -10,6 +10,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { copyValidators } from "../validators";
+import { GUID } from "../guid";
 
 @Component({
   selector: "app-select-cva",
@@ -31,10 +32,10 @@ import { copyValidators } from "../validators";
 export class SelectCvaComponent implements ControlValueAccessor, Validator {
   selectControl = new FormControl();
   readonly bands = [
-    { id: "a3130c86-7fc3-47a8-ab62-161290db089d", name: "The Beatles" },
-    { id: "215686dc-cf8a-4307-ac12-fb5a764ed494", name: "The Rolling Stones" },
-    { id: "a02d763e-7ea4-42c0-8ba8-5953828db04b", name: "The Who" },
-    { id: "e264dfe6-be00-40f5-a7c9-65c9974d6ee9", name: "Pink Floyd" },
+    { id: new GUID("a3130c86-7fc3-47a8-ab62-161290db089d"), name: "The Beatles" },
+    { id: new GUID("215686dc-cf8a-4307-ac12-fb5a764ed494"), name: "The Rolling Stones" },
+    { id: new GUID("a02d763e-7ea4-42c0-8ba8-5953828db04b"), name: "The Who" },
+    { id: new GUID("e264dfe6-be00-40f5-a7c9-65c9974d6ee9"), name: "Pink Floyd" },
   ];
   readonly parentForm = this.inj.get(ControlContainer).control;
 

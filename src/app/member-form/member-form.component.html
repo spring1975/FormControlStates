@@ -5,6 +5,7 @@
     <ng-container
       *appFormControlHint
     ></ng-container>
+    <mat-hint>{{memberForm.controls.firstName.errors | json}}</mat-hint>
   </mat-form-field>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Last Name</mat-label>
@@ -12,10 +13,13 @@
     <ng-container
       *appFormControlHint
     ></ng-container>
+    <mat-hint>{{memberForm.controls.lastName.errors | json}}</mat-hint>
   </mat-form-field>
   <mat-hint class="form-states">
     <mat-icon class="valid">fact_check</mat-icon>
     <mat-icon class="untouched">fingerprint</mat-icon>
     <mat-icon class="pristine">auto_awesome</mat-icon>
   </mat-hint>
+  <mat-hint>{{memberForm.errors | json}}</mat-hint>
+
 </div>

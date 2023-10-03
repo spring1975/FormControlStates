@@ -51,6 +51,7 @@
       <mat-label>Clearable input</mat-label>
       <input matInput type="text" formControlName="clearableInput" />
       <ng-container *appFormControlHint></ng-container>
+      <mat-hint>{{exampleForm.controls.clearableInput.errors | json}}</mat-hint>
     </mat-form-field>
   </section>
   <section>
@@ -105,6 +106,7 @@
       <mat-label>Other input</mat-label>
       <input matInput type="text" formControlName="otherInput" />
       <ng-container *appFormControlHint></ng-container>
+      <mat-hint>{{exampleForm.controls.otherInput.errors | json}}</mat-hint>
     </mat-form-field>
   </section>
   <section>
@@ -159,6 +161,7 @@
       <mat-label>Must have value input</mat-label>
       <input matInput type="text" formControlName="mustHaveValue" />
       <ng-container *appFormControlHint></ng-container>
+      <mat-hint>{{exampleForm.controls.mustHaveValue.errors | json}}</mat-hint>
     </mat-form-field>
   </section>
   <section>
@@ -213,6 +216,7 @@
     <mat-icon class="untouched">fingerprint</mat-icon>
     <mat-icon class="pristine">auto_awesome</mat-icon>
   </mat-hint>
+  <mat-hint>{{exampleForm.errors | json}}</mat-hint>
 </div>
 <pre>
   {{ exampleForm.value | json }}
