@@ -1,1 +1,8 @@
-<p>simple-cva works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Favorite Color</mat-label>
+    <!-- (blur)="onTouched()" must be added to each input field within a CVA -->
+    <input matInput [formControl]="simpleControl" />
+    <ng-container
+      *appFormControlHint
+    ></ng-container>
+  </mat-form-field>

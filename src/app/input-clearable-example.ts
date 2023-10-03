@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Person } from './member-form/member-form.component';
+import { GUID, guidValidator } from './guid';
 
 /**
  * @title Input with a clear button
@@ -16,6 +17,8 @@ export class InputClearableExample {
     otherInput: new FormControl('', [Validators.required]),
     mustHaveValue: new FormControl('something', { nonNullable: true }),
     members: new FormControl<Person[]>([]),
+    favoriteColor: new FormControl('', [Validators.required]),
+    band: new FormControl<GUID | null>(null, [guidValidator]),
   });
 
   setForm() {
@@ -23,6 +26,8 @@ export class InputClearableExample {
       clearableInput: 'foo',
       otherInput: 'bar',
       mustHaveValue: 'baz',
+      favoriteColor: 'green',
+      band: new GUID('e264dfe6-be00-40f5-a7c9-65c9974d6ee9'),
       members: [
         {
           firstName: 'Syd',

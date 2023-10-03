@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill">
+  <mat-label>Band</mat-label>
+  <mat-select [formControl]="selectControl" name="band" (blur)="onTouched()">
+    <mat-option value="00000000-0000-0000-0000-000000000000">None</mat-option>
+    <mat-option *ngFor="let band of bands" [value]="band.id">
+      {{ band.name }}
+    </mat-option>
+  </mat-select>
+  <ng-container *appFormControlHint></ng-container>
+</mat-form-field>

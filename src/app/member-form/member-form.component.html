@@ -1,16 +1,21 @@
 <div [formGroup]="memberForm" class="member-form">
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstName" />
+    <input matInput formControlName="firstName" (blur)="onTouched()" />
     <ng-container
       *appFormControlHint
     ></ng-container>
   </mat-form-field>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastName" />
+    <input matInput formControlName="lastName" (blur)="onTouched()"  />
     <ng-container
       *appFormControlHint
     ></ng-container>
   </mat-form-field>
+  <mat-hint class="form-states">
+    <mat-icon class="valid">fact_check</mat-icon>
+    <mat-icon class="untouched">fingerprint</mat-icon>
+    <mat-icon class="pristine">auto_awesome</mat-icon>
+  </mat-hint>
 </div>

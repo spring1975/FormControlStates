@@ -13,9 +13,10 @@ import { SimpleCvaComponent } from './simple-cva/simple-cva.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MembersComponent } from './members/members.component';
 import { FormControlHintDirective } from './form-control-hint.directive';
+import { SelectCvaComponent } from './select-cva/select-cva.component';
 
 @NgModule({
-  declarations: [InputClearableExample, MemberFormComponent, MembersComponent, SimpleCvaComponent, FormControlHintDirective],
+  declarations: [InputClearableExample, MemberFormComponent, MembersComponent, SimpleCvaComponent, SelectCvaComponent, FormControlHintDirective],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

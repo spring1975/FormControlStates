@@ -1,4 +1,19 @@
-.member-form {
-  display: flex;
-  column-gap: .5rem;;
-}
+
+
+  .member-form {
+    display: flex;
+    column-gap: 0.5rem;
+
+    
+    &.ng-untouched .form-states .untouched,
+    &.ng-pristine .form-states .pristine,
+    &.ng-valid .form-states .valid {
+      color: goldenrod;
+    }
+    
+    &.ng-touched .form-states .untouched,
+    &.ng-dirty .form-states .pristine,
+    &.ng-invalid .form-states .valid {
+      color: red;
+    }
+  }

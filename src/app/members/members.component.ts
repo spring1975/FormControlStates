@@ -1,19 +1,17 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, Injector, forwardRef } from "@angular/core";
 import {
   AbstractControl,
+  ControlContainer,
   ControlValueAccessor,
-  FormArray,
   FormBuilder,
-  FormControl,
-  FormGroup,
   NG_VALUE_ACCESSOR,
-} from '@angular/forms';
-import { Person } from '../member-form/member-form.component';
+} from "@angular/forms";
+import { Person } from "../member-form/member-form.component";
 
 @Component({
-  selector: 'app-members',
-  templateUrl: './members.component.html',
-  styleUrls: ['./members.component.scss'],
+  selector: "app-members",
+  templateUrl: "./members.component.html",
+  styleUrls: ["./members.component.scss"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -23,12 +21,16 @@ import { Person } from '../member-form/member-form.component';
   ],
 })
 export class MembersComponent implements ControlValueAccessor {
-  readonly membersArray = this._init();
+  readonly members = this._init();
+  readonly parentForm = this.inj.get(ControlContainer).control;
 
-  constructor(private readonly _fb: FormBuilder) {}
+  constructor(
+    private readonly inj: Injector,
+    private readonly _fb: FormBuilder
+  ) {}
 
   writeValue(members: (Person | null)[]): void {
-    this.membersArray.clear();
+    this.members.clear();
 
     for (let m of members) {
       if (m) {
@@ -42,32 +44,39 @@ export class MembersComponent implements ControlValueAccessor {
   };
   registerOnChange(fn: any): void {
     this.onChange = fn;
+    this.members.valueChanges.subscribe(fn);
   }
 
   onTouched = () => {
     //Placeholder
   };
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
+    this.onTouched = () => {
+      this.parentForm?.markAsTouched();
+      console.log("touched members");
+      fn.apply(this);
+    };
   }
 
   setDisabledState?(isDisabled: boolean): void {
     if (isDisabled) {
-      this.membersArray.disable();
+      this.members.disable();
     } else {
-      this.membersArray.enable();
+      this.members.enable();
     }
   }
 
   addMember(member?: Person) {
-    const m = this._fb.control<Person>(member ?? {firstName:'', lastName: ''});
-    this.membersArray.push(m);
+    const m = this._fb.control<Person>(
+      member ?? { firstName: "", lastName: "" }
+    );
+    this.members.push(m);
   }
   removeMember(i: number) {
-    this.membersArray.removeAt(i);
+    this.members.removeAt(i);
   }
   private _init() {
-    return this._fb.array<Person>([]);
+    return this._fb.array<Person[]>([])
   }
 
   trackByFn(index: number, _: AbstractControl) {

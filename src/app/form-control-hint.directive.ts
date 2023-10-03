@@ -60,8 +60,8 @@ export class FormControlHintDirective implements OnInit {
     }
 
     // Insert the mat-hint element after the input element
-    const inputElement = parentElement.querySelector("input");
-    if (inputElement) {
+    const formElement = (parentElement.querySelector("input") ?? parentElement.querySelector("mat-select"));
+    if (formElement) {
       this.renderer.appendChild(parentElement, matHintElement);
     }
   }

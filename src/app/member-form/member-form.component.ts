@@ -1,5 +1,6 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, Injector, forwardRef } from '@angular/core';
 import {
+  ControlContainer,
   ControlValueAccessor,
   FormBuilder,
   FormGroup,
@@ -23,12 +24,15 @@ export interface Person {
       useExisting: forwardRef(() => MemberFormComponent),
       multi: true,
     },
-  ],
+  ]
 })
 export class MemberFormComponent implements ControlValueAccessor {
   memberForm: FormGroup<FormGroupOf<Person>>;
+  readonly parentForm = this.inj.get(ControlContainer).control;
 
-  constructor(private readonly _fb: FormBuilder) {
+  constructor(
+    private readonly inj: Injector,
+    private readonly _fb: FormBuilder) {
     this.memberForm = this._init();
   }
 
@@ -41,13 +45,18 @@ export class MemberFormComponent implements ControlValueAccessor {
   };
   registerOnChange(fn: any): void {
     this.onChange = fn;
+    this.memberForm.valueChanges.subscribe(fn);
   }
 
   onTouched = () => {
     //Placeholder
   };
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
+    this.onTouched = () => {
+      this.parentForm?.markAsTouched();
+      console.log('touched member')
+      fn.apply(this);
+    }
   }
 
   setDisabledState?(isDisabled: boolean): void {

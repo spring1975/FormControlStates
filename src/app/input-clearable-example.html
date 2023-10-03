@@ -159,48 +159,61 @@
       <mat-label>Must have value input</mat-label>
       <input matInput type="text" formControlName="mustHaveValue" />
       <ng-container *appFormControlHint></ng-container>
-
     </mat-form-field>
+  </section>
+  <section>
+    <app-simple-cva formControlName="favoriteColor"></app-simple-cva>
+  </section>
+  <section>
+    <app-select-cva formControlName="band"></app-select-cva>
   </section>
   <section>
     <app-members formControlName="members"></app-members>
   </section>
-</div>
 
-<h2>Calling on form</h2>
-<div class="example-button-row">
-  <div class="button">
-    <button
-      mat-fab
-      extended
-      color="primary"
-      (click)="exampleForm.markAsPristine()"
-    >
-      <mat-icon>auto_mode</mat-icon>
-      .markAsPristine()
-    </button>
+  <h2>Calling on form</h2>
+  <div class="example-button-row">
+    <div class="button">
+      <button
+        mat-fab
+        extended
+        color="primary"
+        (click)="exampleForm.markAsPristine()"
+      >
+        <mat-icon>auto_mode</mat-icon>
+        .markAsPristine()
+      </button>
+    </div>
+    <div class="button">
+      <button
+        mat-fab
+        extended
+        color="primary"
+        (click)="exampleForm.markAsUntouched()"
+      >
+        <mat-icon>do_not_touch</mat-icon>
+        .markAsUntouched()
+      </button>
+    </div>
+    <div class="button">
+      <button mat-fab extended color="primary" (click)="setForm()">
+        <mat-icon>input</mat-icon>
+        .setValue()
+      </button>
+    </div>
+    <div class="button">
+      <button mat-fab extended color="primary" (click)="exampleForm.reset()">
+        <mat-icon>restart_alt</mat-icon>
+        .reset()
+      </button>
+    </div>
   </div>
-  <div class="button">
-    <button
-      mat-fab
-      extended
-      color="primary"
-      (click)="exampleForm.markAsUntouched()"
-    >
-      <mat-icon>do_not_touch</mat-icon>
-      .markAsUntouched()
-    </button>
-  </div>
-  <div class="button">
-    <button mat-fab extended color="primary" (click)="setForm()">
-      <mat-icon>input</mat-icon>
-      .setValue()
-    </button>
-  </div>
-  <div class="button">
-    <button mat-fab extended color="primary" (click)="exampleForm.reset()">
-      <mat-icon>restart_alt</mat-icon>
-      .reset()
-    </button>
-  </div>
+  <mat-hint class="form-states">
+    <mat-icon class="valid">fact_check</mat-icon>
+    <mat-icon class="untouched">fingerprint</mat-icon>
+    <mat-icon class="pristine">auto_awesome</mat-icon>
+  </mat-hint>
 </div>
+<pre>
+  {{ exampleForm.value | json }}
+</pre>

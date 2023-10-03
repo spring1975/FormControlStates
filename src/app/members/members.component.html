@@ -2,10 +2,15 @@
   Add
 </button>
 <ul>
-  <li
-    *ngFor="let member of membersArray.controls; let i = index; trackBy: trackByFn"
+ <li
+    *ngFor="let member of members.controls; let i = index; trackBy: trackByFn"
   >
-  <app-member-form [formControl]="member"></app-member-form>
+  <app-member-form [formControl]="member" (blur)="onTouched()"></app-member-form>
   <button mat-raised-button type="button" color="warn" (click)="removeMember(i)">remove</button> &nbsp;
   </li>
 </ul>
+<mat-hint class="control-states">
+  <mat-icon class="valid">fact_check</mat-icon>
+  <mat-icon class="untouched">fingerprint</mat-icon>
+  <mat-icon class="pristine">auto_awesome</mat-icon>
+</mat-hint>
